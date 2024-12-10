@@ -91,19 +91,20 @@ def get_mutated_child(network, normalvariance=0.05**2, sizechangeodds=2):
 log5 = lambda x: np.log(x) / np.log(5)
 
 
-LOAD = "./models/alt2.pkl"
+# LOAD = "./models/alt2.pkl"
+LOAD = False
 LOG = False
 
 loss_strategy = randomstrategy
 startpop = 20
 kidsper = 1
-EPOCHS = 10
+EPOCHS = 200
 PLY = 2
 top = 10
-OPPONENTS = 10
-NORMALVARIANCE = 0.05**2
-SIZECHANGEODDS = 2
-GAMESPER = 2
+OPPONENTS = 50
+NORMALVARIANCE = 0.03**2
+SIZECHANGEODDS = 3
+GAMESPER = 5
 
 
 papas = [[NeuralHeuristic([14, np.random.randint(4, 12), 1], rad=0.5), 0] for i in range(startpop)] # network, score
@@ -137,7 +138,7 @@ for epoch in range(EPOCHS):
         # simple_win_pts = abs(papa[1] / (log5(epoch+2) * GAMESPER))
         simple_win_pts = 1
         win = []
-        for i in range(5):
+        for i in range(GAMESPER):
             win_simple = play_model_and_mixed(papa[0], loss_strategy, simple_heuristic, PLY, 1, 0)
             if win_simple == 1:
                 papa[1] += simple_win_pts
@@ -145,9 +146,6 @@ for epoch in range(EPOCHS):
             elif win_simple == 2:
                 papa[1] -= simple_win_pts*1.5
                 papa[2] -= 1
-        
-
-
 
     # take top 25
     papas.sort(key=lambda x: x[2], reverse=True)
@@ -166,7 +164,7 @@ for epoch in range(EPOCHS):
 
 
 # save best model with pickle
-save(best, "./models/alt3.pkl")
+save(best, "./models/trained.pkl")
     
 
 plt.plot(losses)

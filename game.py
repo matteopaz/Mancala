@@ -99,8 +99,27 @@ class Game:
     
     def getstate(self):
         return self.board.getboard()
+
+    def printguide(self):
+        print("""
+        Welcome to Mancala!
+        If you are not familiar with the game, please refer to the following guide: https://www.scholastic.com/content/dam/teachers/blogs/alycia-zimmerman/migrated-files/mancala_rules.pdf
+        
+        You will be playing against an AI in turns. To make a move, simply input the slot number you want to move from. The corresponding slot numbers are as follows:
+        """)
+        demo = MancalaBoard(list(range(14)))
+        display(demo.getboard())
+
+        print("""
+        If you make an invalid move (e.g. moving from an empty slot, moving from the opponent's slots, etc.), the game will prompt you to make a valid move again.
+        """)
+
+        print("""Good luck! No one has beat the AI yet...""")
+
+        return input("Press Enter to start the game")
     
     def run(self):
+        self.printguide()
         state = -1
         turn = 1
         while state == -1:
