@@ -28,7 +28,7 @@ def plot(data, nn, res, vis = ""):
 
     plt.show()
 
-def copyshape(ndarray: np.ndarray):
+def copyshape(ndarray: np.ndarray): 
     new = np.ndarray(ndarray.shape)
     new.fill(0)
     return new

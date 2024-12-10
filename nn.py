@@ -12,7 +12,7 @@ def initWB(shape, rad=1.0):
         B.append(np.random.rand(shape[i+1], 1) * rad)
     return W, B
 
-class fc:
+class fc: 
     def __init__(self, weights=None, biases=None):
         if weights:
             self.w = weights

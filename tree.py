@@ -12,7 +12,7 @@ class GameState(Node, MancalaBoard):
         self.heuristic = None
         
     
-    def duplicate(self):
+    def duplicate(self): 
         new_gamestate = GameState()
         new_gamestate.children = self.children.copy()
         new_gamestate.parents = self.parents.copy()

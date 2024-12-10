@@ -72,7 +72,7 @@ class Graph:
     
 
     
-    def node(self, id):
+    def node(self, id): 
         return self.nodes[id]
 
     def get_children(self,id):

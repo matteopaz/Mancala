@@ -6,7 +6,7 @@ import random
 from time import perf_counter
 import concurrent.futures
 import pickle
-import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt 
 
 def play(model1, model2, ply):
     tree = TreeWrapper()
